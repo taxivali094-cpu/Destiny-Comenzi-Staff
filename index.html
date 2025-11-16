@@ -1,1 +1,470 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="DS.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comenzi Destiny RP | Graduri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="DS.png" />
+  <style>
+    :root {
+      --purple: #9d4edd;
+      --purple-dark: #7b2cbf;
+      --purple-glow: #c689ff;
+      --bg: #0f0a1a;
+      --card: #1a0f30;
+      --text: #e0d4ff;
+      --text-light: #b8a8e0;
+      --accent: #ff6bff;
+      --green: #2cff00;
+      --blue: #2d58ce;
+      --yellow: #f3a003;
+      --orange: #ff4d00;
+      --red: #890000;
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Fundal particule */
+    #particles {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, rgba(157, 78, 221, 0.15), rgba(123, 44, 191, 0.05));
+      border-radius: 20px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(157, 78, 221, 0.3);
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      background: linear-gradient(90deg, #9d4edd, #ff6bff, #9d4edd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(157, 78, 221, 0.7);
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: var(--text-light);
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    .search-container {
+      position: relative;
+      margin: 30px 0;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 18px 55px 18px 22px;
+      font-size: 1.1rem;
+      background: var(--card);
+      border: 2px solid transparent;
+      border-radius: 18px;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: all 0.4s ease;
+    }
+
+    #searchInput:focus {
+      outline: none;
+      border-color: var(--purple);
+      box-shadow: 0 0 25px rgba(157, 78, 221, 0.6);
+      transform: scale(1.02);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--purple-glow);
+      font-size: 1.4rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .commands-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 10px 0;
+    }
+
+    .cmd-item {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 20px;
+      border: 1px solid rgba(157, 78, 221, 0.2);
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cmd-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.1), transparent);
+      transition: 0.6s;
+    }
+
+    .cmd-item:hover::before {
+      left: 100%;
+    }
+
+    .cmd-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cmd-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(157, 78, 221, 0.3);
+      border-color: var(--purple);
+    }
+
+    .cmd-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .cmd-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cmd-name code {
+      background: rgba(157, 78, 221, 0.25);
+      padding: 4px 12px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: #ff6bff;
+      border: 1px solid rgba(157, 78, 221, 0.5);
+      font-weight: 500;
+    }
+
+    .cmd-grade {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-weight: 600;
+      background: rgba(157, 78, 221, 0.2);
+      color: white;
+      border: 1px solid var(--purple);
+    }
+
+    .cmd-grade i { font-size: 1rem; }
+
+    .cmd-desc {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-top: 60px;
+      border-top: 1px dashed rgba(157, 78, 221, 0.3);
+    }
+
+    .glow {
+      color: var(--purple-glow);
+      text-shadow: 0 0 15px rgba(157, 78, 221, 0.7);
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.3rem; }
+      .cmd-name { font-size: 1.1rem; }
+      .cmd-name code { font-size: 0.8rem; padding: 3px 8px; }
+      .cmd-grade { font-size: 0.75rem; padding: 5px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <div class="container">
+    <header>
+      <h1>COMENZI</h1>
+      <p class="subtitle">Ordonate de la <span class="glow">cel mai mic grad</span> la <span class="glow">cel mai mare</span></p>
+    </header>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Caută o comandă..." />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+
+    <div class="commands-list" id="commandsList">
+      <!-- COMENZI TOȚI JUCĂTORII -->
+      <div class="cmd-item" data-grade="0">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-globe"></i> <code>/coords</code></div>
+          <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
+        </div>
+        <div class="cmd-desc">Afișează coordonatele tale actuale (pentru copiere)</div>
+      </div>
+
+      <div class="cmd-item" data-grade="0">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-id-badge"></i> <code>/id [nume/id]</code></div>
+          <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
+        </div>
+        <div class="cmd-desc">Afișează ID, ore jucate, facțiune, Virtual World și CPS</div>
+      </div>
+
+      <div class="cmd-item" data-grade="0">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-user-police-tie"></i> <code>/politie</code></div>
+          <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
+        </div>
+        <div class="cmd-desc">Listează toți polițiștii online cu rank-ul</div>
+      </div>
+
+      <div class="cmd-item" data-grade="0">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-user-md"></i> <code>/medici</code></div>
+          <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
+        </div>
+        <div class="cmd-desc">Listează toți medicii (Smurd) online cu rank-ul</div>
+      </div>
+
+      <div class="cmd-item" data-grade="0">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-user-friends"></i> <code>/staff</code></div>
+          <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
+        </div>
+        <div class="cmd-desc">Afișează numărul de staff online</div>
+      </div>
+
+      <div class="cmd-item" data-grade="0">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-flag"></i> <code>/goevent</code></div>
+          <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users..."></i> Toți</div>
+        </div>
+        <div class="cmd-desc">TP la evenimentul activ</div>
+      </div>
+
+      <!-- HELPER ÎN TESTE -->
+      <div class="cmd-item" data-grade="1">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-comment-dots"></i> <code>/a [mesaj]</code></div>
+          <div class="cmd-grade" style="background: #2cff00; color: black;"><i class="fas fa-user-graduate"></i> Helper în Teste</div>
+        </div>
+        <div class="cmd-desc">Trimite mesaj în chat-ul de admin</div>
+      </div>
+
+      <div class="cmd-item" data-grade="1">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-motorcycle"></i> <code>/scuter</code></div>
+          <div class="cmd-grade" style="background: #2cff00; color: black;"><i class="fas fa-user-graduate"></i> Helper în Teste</div>
+        </div>
+        <div class="cmd-desc">Dă un Faggio (scuter)</div>
+      </div>
+
+      <div class="cmd-item" data-grade="1">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-location-arrow"></i> <code>/tpto &lt;id&gt;</code></div>
+          <div class="cmd-grade" style="background: #2cff00; color: black;"><i class="fas fa-user-graduate"></i> Helper în Teste</div>
+        </div>
+        <div class="cmd-desc">TP la un jucător</div>
+      </div>
+
+      <div class="cmd-item" data-grade="1">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-people-arrows"></i> <code>/tptome &lt;id&gt;</code></div>
+          <div class="cmd-grade" style="background: #2cff00; color: black;"><i class="fas fa-user-graduate"></i> Helper în Teste</div>
+        </div>
+        <div class="cmd-desc">TP un jucător la tine</div>
+      </div>
+
+      <!-- HELPER+ -->
+      <div class="cmd-item" data-grade="2">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-microphone-slash"></i> <code>/mute &lt;id&gt; &lt;min&gt; &lt;motiv&gt;</code></div>
+          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper+</div>
+        </div>
+        <div class="cmd-desc">Dă mute pe chat</div>
+      </div>
+
+      <div class="cmd-item" data-grade="2">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-microphone"></i> <code>/unmute &lt;id&gt;</code></div>
+          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper+</div>
+        </div>
+        <div class="cmd-desc">Elimină mute-ul</div>
+      </div>
+
+      <div class="cmd-item" data-grade="2">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-heart"></i> <code>/respawn &lt;id&gt;</code></div>
+          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper+</div>
+        </div>
+        <div class="cmd-desc">Respawn + full HP</div>
+      </div>
+
+      <!-- MODERATOR+ -->
+      <div class="cmd-item" data-grade="3">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-plane"></i> <code>/nc</code></div>
+          <div class="cmd-grade" style="background: var(--blue);"><i class="fas fa-gavel"></i> Moderator+</div>
+        </div>
+        <div class="cmd-desc">Activează noclip</div>
+      </div>
+
+      <div class="cmd-item" data-grade="3">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-trash-alt"></i> <code>/cleanup &lt;sec&gt;</code></div>
+          <div class="cmd-grade" style="background: var(--blue);"><i class="fas fa-gavel"></i> Moderator+</div>
+        </div>
+        <div class="cmd-desc">Șterge mașinile neocupate</div>
+      </div>
+
+      <!-- ADMINISTRATOR+ -->
+      <div class="cmd-item" data-grade="4">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-heartbeat"></i> <code>/ara &lt;raza&gt;</code></div>
+          <div class="cmd-grade" style="background: #fff300; color: black;"><i class="fas fa-crown"></i> Administrator</div>
+        </div>
+        <div class="cmd-desc">Revive în rază (default 10m)</div>
+      </div>
+
+      <!-- COMMUNITY MANAGER -->
+      <div class="cmd-item" data-grade="12">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-comment-slash"></i> <code>/stopchat</code></div>
+          <div class="cmd-grade" style="background: #91542b; color: white;"><i class="fas fa-crown"></i> Community Manager</div>
+        </div>
+        <div class="cmd-desc">Dezactivează/Activează chat-ul global</div>
+      </div>
+
+      <div class="cmd-item" data-grade="12">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-flag"></i> <code>/event</code></div>
+          <div class="cmd-grade" style="background: #91542b; color: white;"><i class="fas fa-crown"></i> Community Manager</div>
+        </div>
+        <div class="cmd-desc">Pornește eveniment la poziția ta</div>
+      </div>
+
+      <div class="cmd-item" data-grade="15">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-camera"></i> <code>/ss &lt;id&gt;</code></div>
+          <div class="cmd-grade" style="background: var(--red);"><i class="fas fa-star"></i> CoFondator</div>
+        </div>
+        <div class="cmd-desc">Screenshot la jucător</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Destiny RP </span> • 16 Noiembrie 2025</p>
+      <!-- <p style="margin-top: 10px; font-size: 0.85rem;">Design: <span class="glow">Grok + xAI</span></p> -->
+    </div>
+  </div>
+
+  <script>
+    // Particule
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5 + 0.5,
+        speed: Math.random() * 0.4 + 0.1,
+        color: `hsl(${Math.random() * 60 + 270}, 80%, 70%)`
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        p.y -= p.speed;
+        if (p.y < 0) p.y = canvas.height;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Căutare
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const filter = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(filter) ? 'block' : 'none';
+      });
+    });
+
+    // Animație la scroll
+    const items = document.querySelectorAll('.cmd-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => observer.observe(item));
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
