@@ -2,11 +2,10 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="DS.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Comenzi Staff Destiny</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="icon" href="DS.png" />
+  <title>Comenzi Staff Destiny</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="DS.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
@@ -24,6 +23,11 @@
       --yellow: #f3a003;
       --orange: #ff4d00;
       --red: #890000;
+      --white: #ffffff;
+      --light-blue: #00ecff;
+      --cyan: #00ffcc;
+      --brown: #91542b;
+      --dark-red: #890000;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,7 +40,6 @@
       padding: 20px;
     }
 
-    /* Fundal particule */
     #particles {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -175,7 +178,7 @@
     }
 
     .cmd-name code {
-      background: rgba(157, 78, 221, 0.25);
+      background: rgba(157, 78, 221, 0.25  );
       padding: 4px 12px;
       border-radius: 10px;
       font-size: 0.9rem;
@@ -229,13 +232,12 @@
   </style>
 </head>
 <body>
-
   <canvas id="particles"></canvas>
 
   <div class="container">
     <header>
-      <h1>COMENZI</h1>
-      <p class="subtitle">Ordonate de la <span class="glow">cel mai mic grad</span> la <span class="glow">cel mai mare</span></p>
+      <h1>COMENZI STAFF DESTINY</h1>
+      <p class="subtitle">Actualizat la <span class="glow">16 Noiembrie 2025</span> • Ordonate după grad</p>
     </header>
 
     <div class="search-container">
@@ -244,21 +246,14 @@
     </div>
 
     <div class="commands-list" id="commandsList">
-      <!-- COMENZI TOȚI JUCĂTORII -->
-      <div class="cmd-item" data-grade="0">
-        <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-globe"></i> <code>/coords</code></div>
-          <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
-        </div>
-        <div class="cmd-desc">Afișează coordonatele tale actuale (pentru copiere)</div>
-      </div>
 
+      <!-- TOȚI JUCĂTORII -->
       <div class="cmd-item" data-grade="0">
         <div class="cmd-header">
           <div class="cmd-name"><i class="fas fa-id-badge"></i> <code>/id [nume/id]</code></div>
           <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
         </div>
-        <div class="cmd-desc">Afișează ID, ore jucate, facțiune, Virtual World și CPS</div>
+        <div class="cmd-desc">Afișează ID, ore, facțiune, VW, CPS</div>
       </div>
 
       <div class="cmd-item" data-grade="0">
@@ -266,7 +261,7 @@
           <div class="cmd-name"><i class="fas fa-user-police-tie"></i> <code>/politie</code></div>
           <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
         </div>
-        <div class="cmd-desc">Listează toți polițiștii online cu rank-ul</div>
+        <div class="cmd-desc">Listează polițiștii online</div>
       </div>
 
       <div class="cmd-item" data-grade="0">
@@ -274,32 +269,24 @@
           <div class="cmd-name"><i class="fas fa-user-md"></i> <code>/medici</code></div>
           <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
         </div>
-        <div class="cmd-desc">Listează toți medicii (Smurd) online cu rank-ul</div>
+        <div class="cmd-desc">Listează medicii online</div>
       </div>
 
       <div class="cmd-item" data-grade="0">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-user-friends"></i> <code>/staff</code></div>
+          <div class="cmd-name"><i class="fas fa-user-friends"></i> <code>/admins</code></div>
           <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users"></i> Toți</div>
         </div>
-        <div class="cmd-desc">Afișează numărul de staff online</div>
+        <div class="cmd-desc">Staff online (cooldown 60s)</div>
       </div>
 
-      <div class="cmd-item" data-grade="0">
-        <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-flag"></i> <code>/goevent</code></div>
-          <div class="cmd-grade" style="background: var(--green);"><i class="fas fa-users..."></i> Toți</div>
-        </div>
-        <div class="cmd-desc">TP la evenimentul activ</div>
-      </div>
-
-      <!-- HELPER ÎN TESTE -->
+      <!-- HELPER ÎN TESTE (1) -->
       <div class="cmd-item" data-grade="1">
         <div class="cmd-header">
           <div class="cmd-name"><i class="fas fa-comment-dots"></i> <code>/a [mesaj]</code></div>
           <div class="cmd-grade" style="background: #2cff00; color: black;"><i class="fas fa-user-graduate"></i> Helper în Teste</div>
         </div>
-        <div class="cmd-desc">Trimite mesaj în chat-ul de admin</div>
+        <div class="cmd-desc">Chat staff</div>
       </div>
 
       <div class="cmd-item" data-grade="1">
@@ -307,110 +294,210 @@
           <div class="cmd-name"><i class="fas fa-motorcycle"></i> <code>/scuter</code></div>
           <div class="cmd-grade" style="background: #2cff00; color: black;"><i class="fas fa-user-graduate"></i> Helper în Teste</div>
         </div>
-        <div class="cmd-desc">Dă un Faggio (scuter)</div>
+        <div class="cmd-desc">Spawn Faggio</div>
       </div>
 
       <div class="cmd-item" data-grade="1">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-location-arrow"></i> <code>/tpto &lt;id&gt;</code></div>
+          <div class="cmd-name"><i class="fas fa-location-arrow"></i> <code>/tpto [id]</code></div>
           <div class="cmd-grade" style="background: #2cff00; color: black;"><i class="fas fa-user-graduate"></i> Helper în Teste</div>
         </div>
-        <div class="cmd-desc">TP la un jucător</div>
+        <div class="cmd-desc">TP la jucător</div>
       </div>
 
       <div class="cmd-item" data-grade="1">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-people-arrows"></i> <code>/tptome &lt;id&gt;</code></div>
+          <div class="cmd-name"><i class="fas fa-people-arrows"></i> <code>/tptome [id]</code></div>
           <div class="cmd-grade" style="background: #2cff00; color: black;"><i class="fas fa-user-graduate"></i> Helper în Teste</div>
         </div>
-        <div class="cmd-desc">TP un jucător la tine</div>
+        <div class="cmd-desc">Adu jucător la tine</div>
       </div>
 
-      <!-- HELPER+ -->
+      <div class="cmd-item" data-grade="1">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-map-marked-alt"></i> <code>/coords</code></div>
+          <div class="cmd-grade" style="background: #2cff00; color: black;"><i class="fas fa-user-graduate"></i> Helper în Teste</div>
+        </div>
+        <div class="cmd-desc">Copiază coordonatele</div>
+      </div>
+
+      <!-- HELPER (2) -->
       <div class="cmd-item" data-grade="2">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-microphone-slash"></i> <code>/mute &lt;id&gt; &lt;min&gt; &lt;motiv&gt;</code></div>
-          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper+</div>
+          <div class="cmd-name"><i class="fas fa-microphone-slash"></i> <code>/mute [id] [min] [motiv]</code></div>
+          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper</div>
         </div>
         <div class="cmd-desc">Dă mute pe chat</div>
       </div>
 
       <div class="cmd-item" data-grade="2">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-microphone"></i> <code>/unmute &lt;id&gt;</code></div>
-          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper+</div>
+          <div class="cmd-name"><i class="fas fa-microphone"></i> <code>/unmute [id]</code></div>
+          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper</div>
         </div>
         <div class="cmd-desc">Elimină mute-ul</div>
       </div>
 
       <div class="cmd-item" data-grade="2">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-heart"></i> <code>/respawn &lt;id&gt;</code></div>
-          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper+</div>
+          <div class="cmd-name"><i class="fas fa-heart"></i> <code>/respawn [id]</code></div>
+          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper</div>
         </div>
         <div class="cmd-desc">Respawn + full HP</div>
       </div>
 
-      <!-- MODERATOR+ -->
-      <div class="cmd-item" data-grade="3">
+      <div class="cmd-item" data-grade="2">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-plane"></i> <code>/nc</code></div>
-          <div class="cmd-grade" style="background: var(--blue);"><i class="fas fa-gavel"></i> Moderator+</div>
+          <div class="cmd-name"><i class="fas fa-globe"></i> <code>/setvw [id] [vw]</code></div>
+          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper</div>
         </div>
-        <div class="cmd-desc">Activează noclip</div>
+        <div class="cmd-desc">Setează Virtual World</div>
       </div>
 
+      <div class="cmd-item" data-grade="2">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-sync"></i> <code>/resetvw [id]</code></div>
+          <div class="cmd-grade" style="background: #11ae00;"><i class="fas fa-user-shield"></i> Helper</div>
+        </div>
+        <div class="cmd-desc">Resetează VW la 0</div>
+      </div>
+
+      <!-- MODERATOR (3) -->
       <div class="cmd-item" data-grade="3">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-trash-alt"></i> <code>/cleanup &lt;sec&gt;</code></div>
-          <div class="cmd-grade" style="background: var(--blue);"><i class="fas fa-gavel"></i> Moderator+</div>
+          <div class="cmd-name"><i class="fas fa-trash-alt"></i> <code>/cleanup [sec]</code></div>
+          <div class="cmd-grade" style="background: var(--blue);"><i class="fas fa-gavel"></i> Moderator</div>
         </div>
         <div class="cmd-desc">Șterge mașinile neocupate</div>
       </div>
 
-      <!-- ADMINISTRATOR+ -->
+      <div class="cmd-item" data-grade="3">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-ban"></i> <code>/cancelcleanup</code></div>
+          <div class="cmd-grade" style="background: var(--blue);"><i class="fas fa-gavel"></i> Moderator</div>
+        </div>
+        <div class="cmd-desc">Oprește cleanup-ul</div>
+      </div>
+
+      <!-- ADMINISTRATOR (4) -->
       <div class="cmd-item" data-grade="4">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-heartbeat"></i> <code>/ara &lt;raza&gt;</code></div>
+          <div class="cmd-name"><i class="fas fa-heartbeat"></i> <code>/ara [raza]</code></div>
           <div class="cmd-grade" style="background: #fff300; color: black;"><i class="fas fa-crown"></i> Administrator</div>
         </div>
-        <div class="cmd-desc">Revive în rază (default 10m)</div>
+        <div class="cmd-desc">Revive în rază (1-25m)</div>
       </div>
 
-      <!-- COMMUNITY MANAGER -->
-      <div class="cmd-item" data-grade="12">
+      <!-- HEAD OF STAFF (5) -->
+      <div class="cmd-item" data-grade="5">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-comment-slash"></i> <code>/stopchat</code></div>
-          <div class="cmd-grade" style="background: #91542b; color: white;"><i class="fas fa-crown"></i> Community Manager</div>
+          <div class="cmd-name"><i class="fas fa-star"></i> <code>/stats [id]</code></div>
+          <div class="cmd-grade" style="background: #b7ff00; color: black;"><i class="fas fa-star"></i> Head Of Staff</div>
         </div>
-        <div class="cmd-desc">Dezactivează/Activează chat-ul global</div>
+        <div class="cmd-desc">Vezi detalii jucător</div>
       </div>
 
-      <div class="cmd-item" data-grade="12">
+      <!-- SUPERVISOR (6) -->
+      <div class="cmd-item" data-grade="6">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-flag"></i> <code>/event</code></div>
-          <div class="cmd-grade" style="background: #91542b; color: white;"><i class="fas fa-crown"></i> Community Manager</div>
+          <div class="cmd-name"><i class="fas fa-bolt"></i> <code>/tpw</code></div>
+          <div class="cmd-grade" style="background: var(--orange);"><i class="fas fa-bolt"></i> Supervisor</div>
         </div>
-        <div class="cmd-desc">Pornește eveniment la poziția ta</div>
+        <div class="cmd-desc">TP la waypoint</div>
+      </div>
+
+      <!-- CO-FONDATOR (10) -->
+      <div class="cmd-item" data-grade="10">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-camera"></i> <code>/ss [id]</code></div>
+          <div class="cmd-grade" style="background: var(--dark-red);"><i class="fas fa-star"></i> Co-Fondator</div>
+        </div>
+        <div class="cmd-desc">Screenshot la jucător</div>
+      </div>
+
+      <!-- DETINATOR SECUNDAR (11) -->
+      <div class="cmd-item" data-grade="11">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-plane"></i> <code>/nc</code></div>
+          <div class="cmd-grade" style="background: var(--yellow); color: black;"><i class="fas fa-crown"></i> Detinator Secundar</div>
+        </div>
+        <div class="cmd-desc">Activează noclip (log Discord)</div>
+      </div>
+
+      <div class="cmd-item" data-grade="8">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-trash"></i> <code>/clear</code></div>
+          <div class="cmd-grade" style="background: var(--yellow); color: black;"><i class="fas fa-crown"></i> Detinator Secundar</div>
+        </div>
+        <div class="cmd-desc">Șterge chat-ul global</div>
+      </div>
+
+      <!-- DM FOR HELP (14) -->
+      <div class="cmd-item" data-grade="14">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-gift"></i> <code>/giveallmoney [suma]</code></div>
+          <div class="cmd-grade" style="background: var(--white); color: black;"><i class="fas fa-gift"></i> DM For Help</div>
+        </div>
+        <div class="cmd-desc">Bonus bani pentru toți (cooldown 25s)</div>
+      </div>
+
+      <!-- DM FOR DONATION (15) -->
+      <div class="cmd-item" data-grade="15">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-diamond"></i> <code>/givealldiamante [nr]</code></div>
+          <div class="cmd-grade" style="background: var(--light-blue); color: black;"><i class="fas fa-gem"></i> DM FOR DONATION</div>
+        </div>
+        <div class="cmd-desc">Bonus diamante pentru toți</div>
       </div>
 
       <div class="cmd-item" data-grade="15">
         <div class="cmd-header">
-          <div class="cmd-name"><i class="fas fa-camera"></i> <code>/ss &lt;id&gt;</code></div>
-          <div class="cmd-grade" style="background: var(--red);"><i class="fas fa-star"></i> CoFondator</div>
+          <div class="cmd-name"><i class="fas fa-terminal"></i> <code>/adm [id] [level]</code></div>
+          <div class="cmd-grade" style="background: var(--light-blue); color: black;"><i class="fas fa-code"></i> DM FOR DONATION</div>
         </div>
-        <div class="cmd-desc">Screenshot la jucător</div>
+        <div class="cmd-desc">Setează grad admin</div>
       </div>
+
+      <div class="cmd-item" data-grade="15">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-skull"></i> <code>/kill [id]</code></div>
+          <div class="cmd-grade" style="background: var(--light-blue); color: black;"><i class="fas fa-code"></i> DM FOR DONATION</div>
+        </div>
+        <div class="cmd-desc">Ucide jucătorul</div>
+      </div>
+
+      <div class="cmd-item" data-grade="15">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-car"></i> <code>/givecar [id] [model]</code></div>
+          <div class="cmd-grade" style="background: var(--light-blue); color: black;"><i class="fas fa-code"></i> DM FOR DONATION</div>
+        </div>
+        <div class="cmd-desc">Dă mașină jucătorului</div>
+      </div>
+
+      <div class="cmd-item" data-grade="7">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-comment-slash"></i> <code>/stopchat</code></div>
+         <div class="cmd-grade" style="background: var(--light-blue); color: black;"><i class="fas fa-code"></i> DM FOR DONATION</div>
+        </div>
+        <div class="cmd-desc">Dez/Activează chat-ul</div>
+      </div>
+
+      <div class="cmd-item" data-grade="15">
+        <div class="cmd-header">
+          <div class="cmd-name"><i class="fas fa-clock"></i> <code>/sethours [id] [ore]</code></div>
+          <div class="cmd-grade" style="background: var(--light-blue); color: black;"><i class="fas fa-code"></i> DM FOR DONATION</div>
+        </div>
+        <div class="cmd-desc">Setează ore jucate</div>
+      </div>
+
     </div>
 
     <div class="footer">
-      <p>Destiny RP </span> • 16 Noiembrie 2025</p>
-      <!-- <p style="margin-top: 10px; font-size: 0.85rem;">Design: <span class="glow">Grok + xAI</span></p> -->
+      <p>Destiny RP • Actualizat: 16 Noiembrie 2025</p>
     </div>
   </div>
 
   <script>
-    // Particule
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -441,7 +528,6 @@
     }
     animate();
 
-    // Căutare
     document.getElementById('searchInput').addEventListener('input', function() {
       const filter = this.value.toLowerCase();
       document.querySelectorAll('.cmd-item').forEach(item => {
@@ -450,7 +536,6 @@
       });
     });
 
-    // Animație la scroll
     const items = document.querySelectorAll('.cmd-item');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
